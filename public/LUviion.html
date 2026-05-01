@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUviion | Cloud & Neural Systems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; --bg: #000; --card: #0a0a0a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: #fff; line-height: 1.6; }
+
+        /* HEADER */
+        header { padding: 30px; text-align: center; border-bottom: 1px solid #111; }
+        .logo { font-weight: 900; font-size: 1.8rem; letter-spacing: -1px; }
+        .badge { color: var(--gold); font-size: 0.7rem; border: 1px solid var(--gold); padding: 4px 12px; border-radius: 50px; text-transform: uppercase; }
+
+        /* CONTAINER */
+        .container { max-width: 800px; margin: 50px auto; padding: 20px; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        
+        .box { background: var(--card); border: 1px solid #1a1a1a; padding: 30px; border-radius: 20px; margin-bottom: 20px; }
+        
+        input { width: 100%; padding: 15px; background: #000; border: 1px solid #333; border-radius: 10px; color: #fff; margin: 15px 0; }
+        .btn { width: 100%; padding: 15px; background: #fff; color: #000; border: none; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; }
+        
+        /* BLOQUEIO DE HOSPEDAGEM */
+        #lock-screen { display: none; text-align: center; border: 1px solid var(--gold); }
+        .price { font-size: 2.5rem; font-weight: 900; margin: 20px 0; color: var(--gold); }
+        .btn-pay { background: var(--gold); color: #000; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 900; display: inline-block; }
+
+        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">LU<span style="color:var(--gold)">VII</span>ON</div>
+    <span class="badge">Enterprise Cloud Solutions</span>
+</header>
+
+<div class="container">
+    <div class="hero">
+        <h1>Construa sua Presença Digital</h1>
+        <p style="color:#888">Sistemas neurais com hospedagem global instantânea.</p>
+    </div>
+
+    <div class="box" id="app-box">
+        <p style="font-size: 0.8rem; color: var(--gold);">CRÉDITOS DE TESTE: <span id="count">2</span></p>
+        <input type="text" id="site-name" placeholder="Nome da sua Empresa ou Ideia">
+        <button class="btn" onclick="iniciar()">Gerar e Alocar no Servidor</button>
+    </div>
+
+    <div class="box" id="lock-screen">
+        <h2 style="color:var(--gold)">LIMITE DE HOSPEDAGEM ATINGIDO</h2>
+        <p style="margin-top: 10px;">Para manter seus sites online em nossa rede global e criar novos projetos ilimitados:</p>
+        <div class="price">R$ 499,00 <span>/ano</span></div>
+        <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">Inclui: Domínio Próprio + Hospedagem SSL + Suporte Premium</p>
+        <a href="https://wa.me/SEU_NUMERO" class="btn-pay">ATIVAR ACESSO PREMIUM</a>
+    </div>
+
+    <div class="box">
+        <p style="font-size: 0.7rem; color: #555; text-transform: uppercase;">Status do Servidor</p>
+        <textarea id="log" style="width:100%; height:100px; background:#000; border:none; color:#0f0; font-family:monospace; font-size:0.7rem; margin-top:10px;" readonly>Aguardando comando...</textarea>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 LUVIION SYSTEMS - TECNOLOGIA SEM FRONTEIRAS
+</footer>
+
+<script>
+    let c = localStorage.getItem('luvi_c') || 2;
+    document.getElementById('count').innerText = c;
+
+    function iniciar() {
+        if(c > 0) {
+            c--;
+            localStorage.setItem('luvi_c', c);
+            document.getElementById('count').innerText = c;
+            
+            let nome = document.getElementById('site-name').value;
+            let log = document.getElementById('log');
+            
+            log.value = ">> CONECTANDO AOS SERVIDORES GLOBAIS...\n>> CRIANDO BANCO DE DADOS...\n>> SITE PRONTO E HOSPEDADO COM SUCESSO!";
+            
+            setTimeout(() => {
+                alert("Site '" + nome + "' foi gerado e alocado temporariamente. Para acesso permanente, mude para o plano Pro.");
+            }, 1000);
+            
+        } else {
+            document.getElementById('app-box').style.display = 'none';
+            document.getElementById('lock-screen').style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
